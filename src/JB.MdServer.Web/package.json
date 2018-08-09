@@ -1,0 +1,24 @@
+{
+  "name": "jb.mdserver.web",
+  "version": "1.0.0",
+  "description": "ASP.NET Core as Markdown server",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-html-extend": "^1.1.6",
+    "gulp-markdown": "^3.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-watch": "^5.0.1",
+    "marked": "^0.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "markdown",
+    "aspnetcore"
+  ],
+  "author": "Karatejb",
+  "license": "MIT"
+}
