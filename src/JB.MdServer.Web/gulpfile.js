@@ -10,8 +10,9 @@ const extender = require('gulp-html-extend')
 const markdown = require('gulp-markdown');
 const marked = require('marked');
 
+var mdFilePath = "./wwwroot/markdown/";
+
 // Set options
-// `highlight` example uses `highlight.js`
 marked.setOptions({
     renderer: new marked.Renderer(),
     highlight: function (code) {
@@ -27,22 +28,20 @@ marked.setOptions({
     xhtml: false
 });
 
-var mdFilePath = "./wwwroot/markdown/";
 
 //Convert MD to HTML
 gulp.task('md', function () {
     return gulp.src(mdFilePath + '**/*.md')
         .pipe(markdown(marked))
-        .pipe(gulp.dest(mdFilePath+ "dist"));
-        // .pipe(rename({
-        //     extname: ".html"
-        // }))
-        // .pipe(gulp.dest(function (file) {
-        //     return file.base;
-        // }));
+        .pipe(rename({
+            extname: ".html"
+        }))
+        .pipe(gulp.dest(function (file) {
+            return file.base;
+        }));
 })
 
-//
+//Merge the master and extend pages
 gulp.task('extend', ['md'], function () {
     return gulp.src(mdFilePath + '**/*.html')
         .pipe(extender({
@@ -53,8 +52,6 @@ gulp.task('extend', ['md'], function () {
             return file.base;
         }));
 });
-
-
 
 
 gulp.task('watch', function () {
